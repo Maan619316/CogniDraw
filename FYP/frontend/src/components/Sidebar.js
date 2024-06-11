@@ -11,7 +11,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     if (isOpen) {
       // Fetch history data from the server
       axios
-        .get("https://cogni-draw-api.vercel.app/Diagrams") // Adjust the endpoint according to your backend
+        .get("http://127.0.0.1:3001/Diagrams") // Adjust the endpoint according to your backend
         .then((response) => setHistory(response.data))
         .catch((error) => console.error("Error fetching history:", error));
     }
@@ -21,7 +21,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     // Fetch the mycode corresponding to the objectid from the server
     console.log("clicked");
     axios
-      .get(`https://cogni-draw-api.vercel.app/Diagrams/${objectid}`)
+      .get(`http://127.0.0.1:3001/Diagrams/${objectid}`)
       .then((response) => {
         // Update localStorage with the retrieved mycode
         localStorage.setItem("generatedPsuedo", response.data.mycode);
