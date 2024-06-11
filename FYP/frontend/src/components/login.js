@@ -17,7 +17,7 @@ export default function Login() {
     event.preventDefault();
 
     axios
-      .post("https://cogni-draw-bprkgwu8f-usmans-projects-9557ae50.vercel.app/login", { email, password })
+      .post("http://127.0.0.1/login", { email, password })
       .then((result) => {
         console.log(result);
 
