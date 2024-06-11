@@ -42,7 +42,7 @@ export default function OutPutScreen() {
         .then((dataUrl) => {
           const image = dataUrl.split(",")[1]; // Extract base64 image data
           const mycode = localStorage.getItem("generatedPsuedo");
-          fetch("http://127.0.0.1:3001/addDiagram", {
+          fetch("https://cogni-draw-api.vercel.app/addDiagram", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -92,7 +92,7 @@ export default function OutPutScreen() {
     const feedbackData = satisfactionLevel;
 
     // Send feedback data to the server
-    fetch("http://127.0.0.1:3001/feedback", {
+    fetch("https://cogni-draw-api.vercel.app/feedback", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
