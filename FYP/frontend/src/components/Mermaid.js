@@ -22,8 +22,13 @@ export default class Mermaid extends React.Component {
   }
 
   renderMermaid() {
-    mermaid.contentLoaded();
-    mermaid.init(undefined, ".mermaid"); // Initialize Mermaid again
+    try {
+      mermaid.contentLoaded();
+      mermaid.init(undefined, ".mermaid"); // Initialize Mermaid again
+    } catch (error) {
+      // Handle errors silently
+      console.error("Network Error:", error);
+    }
   }
 
   render() {
