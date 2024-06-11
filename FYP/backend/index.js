@@ -14,7 +14,7 @@ credentials: true
 
 configDotenv();
 
-const url = process.env.MONGOURL;
+const url = 'mongodb+srv://maan:maan123456@cd.wytjue7.mongodb.net/?retryWrites=true&w=majority&appName=CD';
 const port = process.env.PORT || 8000;
 
 mongoose
@@ -33,6 +33,6 @@ app.get("/", (req, res) => {
   res.send("Hello World I am Soban");
 });
 
-app.listen(port, () => {
+app.listen(3001, () => {
   console.log(`Server running on ${port}`);
 });
