@@ -17,7 +17,7 @@ export default function Login() {
     event.preventDefault();
 
     axios
-      .post("http://127.0.0.1/login", { email, password })
+      .post("http://127.0.0.1:3001/login", { email, password })
       .then((result) => {
         console.log(result);
 
