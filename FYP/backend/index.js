@@ -29,7 +29,7 @@ mongoose
 const User = require("./Router/User");
 app.use(User);
 
-app.get("/", (req, res) => {
+app.get("/home", (req, res) => {
   res.send("Hello World I am Soban");
 });
 
