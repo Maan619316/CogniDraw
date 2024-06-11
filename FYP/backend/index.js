@@ -5,12 +5,13 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 app.use(express.json());
-app.use(cors({
+const corsOptions = {
+  origin: "https://cogni-draw-frontend-eight.vercel.app", // Update with your frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
 
-origin: ["https://cogni-draw-frontend-22fxy3lsr-usmans-projects-9557ae50.vercel.app/"],
-methods: ["POST", "GET"],
-credentials: true
-}));
+app.use(cors(corsOptions));
 
 configDotenv();
 
