@@ -18,21 +18,23 @@ const url = 'mongodb+srv://maan:maan123456@cd.wytjue7.mongodb.net/?retryWrites=t
 const port = process.env.PORT || 8000;
 
 mongoose
-  .connect(url)
+  .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("DB Connected");
   })
   .catch((err) => {
-    console.log("Not Connected");
+    console.log("Not Connected", err);
   });
 
-const User = require("./Router/User");
-app.use("/api",User);
+const UserRouter = require("./Router/User");
+app.use("/api", UserRouter);
 
-app.get("/home", (req, res) => {
+app.get("/", (req, res) => {
   res.send("Hello World I am Soban");
 });
 
-app.listen(3001, () => {
+app.listen(port, () => {
   console.log(`Server running on ${port}`);
 });
+
+module.exports = app;
