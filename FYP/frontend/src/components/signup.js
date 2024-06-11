@@ -17,7 +17,7 @@ export default function Signup() {
     event.preventDefault();
 
     axios
-      .post("https://cogni-draw-api.vercel.app/signup", { name, email, password })
+      .post("http://127.0.0.1:3001/signup", { name, email, password })
       .then((result) => {
         console.log(result);
         if (result.data === "Already registered") {
