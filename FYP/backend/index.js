@@ -27,7 +27,7 @@ mongoose
   });
 
 const User = require("./Router/User");
-app.use(User);
+app.use("/api",User);
 
 app.get("/home", (req, res) => {
   res.send("Hello World I am Soban");
