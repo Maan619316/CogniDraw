@@ -9,7 +9,6 @@ const Feedback = require("../Model/Feedback");
 const { v4: uuidv4 } = require("uuid");
 
 router.post("/signup", (req, res) => {
-  console.log("Hello");
   const data = req.body;
   data.userid = Math.floor(Math.random() * 5000);
   try {
@@ -80,8 +79,6 @@ router.put("/changePassword/:id", async (req, res) => {
 router.post("/addDiagram", (req, res) => {
   const { image, mycode, diagram } = req.body;
 
-  console.log("image : " + image);
-  console.log("pseudocode : " + mycode);
   if (!image || !mycode) {
     return res
       .status(400)
@@ -106,7 +103,6 @@ router.post("/addDiagram", (req, res) => {
 router.get("/diagrams", async (req, res) => {
   try {
     const allDiagrams = await Diagram.find();
-
     res.json(allDiagrams);
   } catch (error) {
     res.status(500).json({ error: "Failed to retrieve Diagram" });
@@ -130,9 +126,9 @@ router.delete("/deleteDiagram/:id", async (req, res) => {
     res.status(500).json({ error: "Failed to delete Diagram" });
   }
 });
+
 router.post("/feedback", async (req, res) => {
   const { feedbackData } = req.body;
-  console.log(feedbackData);
   try {
     const newFeedback = new Feedback({
       objectid: uuidv4(),
@@ -149,18 +145,17 @@ router.post("/feedback", async (req, res) => {
       .json({ success: false, message: "Failed to submit feedback", error });
   }
 });
+
 router.get("/diagrams/:objectid", async (req, res) => {
   const { objectid } = req.params;
 
   try {
-    // Find the diagram with the provided objectid
     const diagram = await Diagram.findOne({ objectid });
 
     if (!diagram) {
       return res.status(404).json({ error: "Diagram not found" });
     }
 
-    // Return the mycode associated with the diagram
     res.json({ mycode: diagram.mycode });
   } catch (error) {
     res
